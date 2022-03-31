@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className='links-container'>
         {links.map(link => {
           const {id, url, text} = link
-          return <a className='links' id={id} href={url}>{text}</a>
+          return <a className='links' key={id} href={url}>{text}</a>
         })}
       </div>
     </nav>

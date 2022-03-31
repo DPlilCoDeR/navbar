@@ -15,4 +15,10 @@ describe('Navbar component', () => {
     const toggle = screen.getByText(/toggle/i)
     expect(toggle).toBeInTheDocument();
   })
+  
+  it('have links', ()=>{
+    render(<Navbar/>);
+    const links = screen.getAllByRole(/a/i);
+    links.map(link=> expect(link).toBeInTheDocument())
+  })
 });
