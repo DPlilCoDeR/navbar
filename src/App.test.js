@@ -1,9 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders App without crash', () => {
-  render(<App />);
-  let headingElement = screen.getAllByRole('heading');
-  console.log(headingElement)
-  expect(headingElement).toBeInTheDocument();
+afterEach(() => render(<App/>))
+
+describe('App component', () => {
+  it('render heading', () => {
+    let headingElement = screen.queryByRole('heading');
+    expect(headingElement).not.toBeInTheDocument();
+  })
+  
+
+  it('have navbar component', ()=>{
+    const navBarComponent = screen.getByText(/navbar/i)
+    expect(navBarComponent).toBeInTheDocument()
+  })
 });
