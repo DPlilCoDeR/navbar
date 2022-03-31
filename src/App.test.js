@@ -1,17 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-afterEach(() => render(<App/>))
 
 describe('App component', () => {
   it('render heading', () => {
-    let headingElement = screen.queryByRole('heading');
-    expect(headingElement).not.toBeInTheDocument();
+    render(<App/>)
+    let headingElement = screen.getByText(/navbar project setup/i);
+    expect(headingElement).toBeInTheDocument();
   })
   
 
   it('have navbar component', ()=>{
-    const navBarComponent = screen.getByText(/navbar/i)
+    render(<App/>)
+    const navBarComponent = screen.getByRole(/nav/i)
     expect(navBarComponent).toBeInTheDocument()
   })
 });
